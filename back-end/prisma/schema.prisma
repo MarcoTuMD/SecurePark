@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model TipoVeiculo {
+  id    Int    @id @default(autoincrement())
+  nome  String
+  vagas Vaga[]
+}
+
+model Vaga {
+  id            Int         @id @default(autoincrement())
+  acupada       Boolean     @default(false)
+  tipoVeiculo   TipoVeiculo @relation(fields: [tipoVeiculoId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tipoVeiculoId Int
+}
