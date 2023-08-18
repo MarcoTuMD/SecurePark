@@ -1,12 +1,12 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import { TipoVeiculoContoller } from './src/controllers/TipoVeiculoController';
+import { TipoVeiculoContoller } from './controllers/TipoVeiculoController';
 import bodyParser from 'body-parser';
-import { VagaContoller } from './src/controllers/VagaController';
+import { VagaContoller } from './controllers/VagaController';
 
 dotenv.config();
 
-const app: Express = express();
+export const app: Express = express();
 const port = process.env.PORT;
 
 app.use(bodyParser.json());
