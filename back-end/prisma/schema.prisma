@@ -18,7 +18,7 @@ model TipoVeiculo {
 
 model Vaga {
   id            Int         @id @default(autoincrement())
-  acupada       Boolean     @default(false)
+  ocupada       Boolean     @default(false)
   tipoVeiculo   TipoVeiculo @relation(fields: [tipoVeiculoId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   tipoVeiculoId Int
 }
