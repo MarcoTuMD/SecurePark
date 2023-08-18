@@ -11,8 +11,8 @@ const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
-const controllerTipoVeiculo: TipoVeiculoContoller = new TipoVeiculoContoller();
-const controllerVaga: VagaContoller = new VagaContoller();
+const controllerTipoVeiculo: TipoVeiculoContoller = TipoVeiculoContoller.getInstance();
+const controllerVaga: VagaContoller = VagaContoller.getInstance();
 
 //rotas para o tipo de veiculo
 

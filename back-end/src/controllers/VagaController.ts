@@ -1,10 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 
 export class VagaContoller {
-    private prisma: PrismaClient;
+    private static instance: VagaContoller;
+    private prisma: PrismaClient = new PrismaClient();
 
-    constructor() {
-        this.prisma = new PrismaClient();
+    private constructor() { }
+
+    public static getInstance(): VagaContoller {
+        if (!VagaContoller.instance) {
+            VagaContoller.instance = new VagaContoller();
+        }
+        return VagaContoller.instance;
     }
 
     public async listarTodas() {

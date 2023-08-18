@@ -1,10 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 
 export class TipoVeiculoContoller {
-    private prisma: PrismaClient;
+    private static instance: TipoVeiculoContoller;
+    private prisma: PrismaClient = new PrismaClient();
 
-    constructor() {
-        this.prisma = new PrismaClient();
+    private constructor() { }
+
+    public static getInstance(): TipoVeiculoContoller {
+        if (!TipoVeiculoContoller.instance) {
+            TipoVeiculoContoller.instance = new TipoVeiculoContoller();
+        }
+        return TipoVeiculoContoller.instance;
     }
 
     public async listarTodos() {
