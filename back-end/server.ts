@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { TipoVeiculoContoller } from './controllers/TipoVeiculoController';
 import bodyParser from 'body-parser';
 import { VagaContoller } from './controllers/VagaController';
+import { VagaObserver } from './controllers/Observer/VagaObserver';
 
 dotenv.config();
 
@@ -13,6 +14,9 @@ app.use(bodyParser.json());
 
 const controllerTipoVeiculo: TipoVeiculoContoller = TipoVeiculoContoller.getInstance();
 const controllerVaga: VagaContoller = VagaContoller.getInstance();
+const observer = new VagaObserver();
+controllerVaga.addObserver(observer);
+
 
 //rotas para o tipo de veiculo
 
